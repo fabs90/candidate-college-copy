@@ -41,13 +41,13 @@ export default function SidebarDesktop({
           alt="Logo Candidate College"
           width={100}
           height={100}
-          src={"/logo-full-cc.png"}
+          src={"/assets/image/logo-full-cc.png"}
         />
       </div>
 
       <div className="flex gap-3  justify-center w-full mt-3 px-5 ">
         <Image
-          src="/Avatar.png"
+          src="/assets/image/Avatar.png"
           className="w-[48px] h-[48px] rounded-full"
           width={100}
           height={100}
@@ -62,7 +62,6 @@ export default function SidebarDesktop({
       </div>
       {/* <Separator /> */}
       <div className="mt-4 px-4 overflow-y-auto">
-        <h2 className="text-[#FFFFFF52] font-medium text-[11px] px-5">MAIN</h2>
         <ul className="flex mt-2 relative flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (

@@ -6,6 +6,7 @@ import SidebarDesktop from "./SidebarDesktop";
 import SidebarMobile from "./SidebarMobile";
 import { usePathname } from "next/navigation";
 import "animate.css";
+import { DashboardIcon, TaskSquareIcon } from "../icons";
 
 // import Image from "next/image";
 // import Link from "next/link";
@@ -36,12 +37,12 @@ export default function NewSidebar() {
     {
       title: "Dashboard",
       path: "/academic-development",
-      icon: "<DashboardIcon />",
+      icon: <DashboardIcon />,
     },
     {
       title: "Article",
       path: "/academic-development/articles",
-      icon: "<ArticleIcon />",
+      icon: <TaskSquareIcon />,
     },
   ];
 

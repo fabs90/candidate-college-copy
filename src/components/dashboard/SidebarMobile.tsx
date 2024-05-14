@@ -37,13 +37,13 @@ export default function SidebarMobile({
           alt="Logo Candidate College"
           width={100}
           height={100}
-          src={"/logo-cc.png"}
+          src={"/assets/image/logo-cc.png"}
         />
       </div>
-      {console.log(isActive)}
+
       <div className="flex gap-3  justify-center w-full mt-5 px-4 ">
         <Image
-          src="/Avatar.png"
+          src="/assets/image/Avatar.png"
           className="w-[48px] h-[48px] rounded-full"
           width={100}
           height={100}
@@ -52,9 +52,6 @@ export default function SidebarMobile({
       </div>
       {/* <Separator /> */}
       <div className="mt-4 px-4 overflow-y-auto mx-auto">
-        <h2 className="text-[#FFFFFF52] font-medium text-[11px] text-center px-3">
-          MAIN
-        </h2>
         <ul className="flex mt-2 relative z- flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (
