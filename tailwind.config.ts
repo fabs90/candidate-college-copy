@@ -21,6 +21,16 @@ const config: Config = {
         tersier: "#90A3BF",
         grey: "#B3C4CE",
       },
+
+      animation: {
+        hilang: "hilang 0.4s forwards",
+      },
+      keyframes: {
+        hilang: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0", display: "none" },
+        },
+      },
     },
   },
   plugins: [],
