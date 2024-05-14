@@ -3,19 +3,24 @@ import InputLogin from "../form/InputLogin";
 import RememberMe from "../form/RememberMe";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import useLoginForm from "@/hooks/useLoginForm";
+
+import { zodValidator } from "@tanstack/zod-form-adapter";
+import { useForm } from "@tanstack/react-form";
+import useAddData from "@/hooks/useAddData";
 
 export default function FormSection() {
-  const {
-    email,
-    password,
-    rememberme,
-    setEmail,
-    mutation,
-    setPassword,
-    setRememberme,
-    onSubmit,
-  } = useLoginForm();
+  const [rememberme, setRememberme] = useState<boolean>(false);
+  const { mutation } = useAddData({ url: "/test" });
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async ({ value }) => {
+      mutation.mutate({ ...value });
+    },
+    validatorAdapter: zodValidator,
+  });
 
   return (
     <section className="flex-1">
@@ -28,22 +33,25 @@ export default function FormSection() {
           Login with your account to get started
         </p>
         <div className="max-w-[90%] lg:max-w-[75%] w-full mx-auto">
-          <form onSubmit={onSubmit}>
+          {/* <form onSubmit={handleSubmit(onSubmit)}> */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              form.handleSubmit();
+            }}
+          >
             <InputLogin
               className="mt-12 w-full"
-              id="email"
-              value={email}
-              setValue={setEmail}
-              name="Email"
+              form={form}
+              name="email"
               placeholder="Enter your email"
               type="email"
             />
             <InputLogin
               className="mt-5 w-full"
-              value={password}
-              id="password"
-              setValue={setPassword}
-              name="Password"
+              form={form}
+              name="password"
               placeholder="Enter your password"
               type="password"
             />
@@ -55,13 +63,18 @@ export default function FormSection() {
               />
               <span className="text-sm text-secondary">Forgot Password?</span>
             </div>
-
-            <button
-              type="submit"
-              className="w-full mt-12 bg-secondary text-primary rounded-[30px] font-semibold py-4 text-center"
-            >
-              Login
-            </button>
+            <form.Subscribe
+              selector={(state) => [state.canSubmit, state.isSubmitting]}
+              children={([canSubmit, isSubmitting]) => (
+                <button
+                  disabled={!canSubmit}
+                  type="submit"
+                  className="w-full mt-12 bg-secondary text-primary rounded-[30px] font-semibold py-4 text-center"
+                >
+                  {isSubmitting ? "..." : "Submit"}
+                </button>
+              )}
+            />
           </form>
           <p className="font-medium mt-3 text-sm text-center">
             Don’t Have An Account?{" "}
