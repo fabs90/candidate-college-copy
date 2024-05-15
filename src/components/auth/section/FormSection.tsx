@@ -65,7 +65,8 @@ export default function FormSection() {
             </div>
             <form.Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
+            >
+              {([canSubmit, isSubmitting]) => (
                 <button
                   disabled={!canSubmit}
                   type="submit"
@@ -74,7 +75,7 @@ export default function FormSection() {
                   {isSubmitting ? "..." : "Submit"}
                 </button>
               )}
-            />
+            </form.Subscribe>
           </form>
           <p className="font-medium mt-3 text-sm text-center">
             Don’t Have An Account?{" "}
