@@ -48,7 +48,8 @@ export default function InputLogin({
             }
           ),
         }}
-        children={(field) => {
+      >
+        {(field) => {
           // Avoid hasty abstractions. Render props are great!
           return (
             <>
@@ -70,7 +71,7 @@ export default function InputLogin({
             </>
           );
         }}
-      />
+      </form.Field>
       {/* <label className="block" htmlFor={id}>
         {name}
       </label>
