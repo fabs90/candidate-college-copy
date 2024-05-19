@@ -46,14 +46,26 @@ export default function NewSidebar() {
     },
   ];
 
+  const linkProfile = "/staff/profile";
+
   return (
     <div id="first-driver" className="fixed z-20 inset-y-0">
       {/* // <> */}
       <ButtonSidebar />
       {/* Sidebar mobile */}
-      <SidebarMobile pathname={pathname} root="/staff" navLink={navLink} />
+      <SidebarMobile
+        profileLink={linkProfile}
+        pathname={pathname}
+        root="/staff"
+        navLink={navLink}
+      />
       {/* Sidebar Desktop */}
-      <SidebarDesktop pathname={pathname} root="/staff" navLink={navLink} />
+      <SidebarDesktop
+        profileLink={linkProfile}
+        pathname={pathname}
+        root="/staff"
+        navLink={navLink}
+      />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function useAddData({ url, isMultipart = false }: addData) {
         }),
       });
     },
-    onError: (error: any, variables, context) => {
+    onError: (error: any, variables: any, context: any) => {
       console.log(error);
     },
   });

@@ -18,10 +18,12 @@ import { LogoutIcon } from "../icons";
 
 export default function SidebarDesktop({
   navLink,
+  profileLink,
   pathname,
   root,
 }: {
   navLink: any;
+  profileLink: string;
   root: string;
   pathname: string;
 }) {
@@ -49,19 +51,32 @@ export default function SidebarDesktop({
         />
       </div>
 
-      <div className="flex gap-3 relative justify-center w-full mt-3 px-5 ">
-        <Image
-          src="/assets/image/Avatar.png"
-          className="w-[48px] h-[48px] rounded-full"
-          width={100}
-          height={100}
-          alt="Photo Profile"
-        />
-        <div className="flex flex-col justify-center">
-          <h4 className="text-[11px] uppercase text-[##FFFFFF52] font-medium">
-            Academic Development
-          </h4>
-          <h3 className="font-medium text-[14px] text-white">Maudy Ayunda</h3>
+      <div className={`relative  w-full mt-3 px-5`}>
+        <div
+          className={`${styles.border_link} ${
+            pathname.startsWith(profileLink) && styles.border_link_active
+          } relative`}
+        >
+          <Link
+            href={"/staff/profile/edit/1"}
+            className="justify-center px-3 py-2 flex gap-3 relative"
+          >
+            <Image
+              src="/assets/image/Avatar.png"
+              className="w-[48px] h-[48px] rounded-full"
+              width={100}
+              height={100}
+              alt="Photo Profile"
+            />
+            <div className="flex flex-col justify-center">
+              <h3 className="font-medium text-[14px] text-white">
+                Naruto Uzumaki
+              </h3>
+              <h4 className="text-[10px] uppercase text-grey font-medium">
+                WEB DEVELOPMENT
+              </h4>
+            </div>
+          </Link>
         </div>
       </div>
       <Separator />

@@ -8,6 +8,7 @@ import Navbar from "@/components/dashboard/Navbar";
 import DropInputFile from "@/components/dashboard/weekly-report/DropInputFile";
 import { useState } from "react";
 import ButtonSubmit from "@/components/dashboard/weekly-report/ButtonSubmit";
+import ButtonDelete from "@/components/dashboard/weekly-report/ButtonDelete";
 import useSuccessReport from "@/hooks/useSuccessReport";
 
 export default function DashboardStaffPage() {
@@ -24,10 +25,9 @@ export default function DashboardStaffPage() {
 
         <DropInputFile className="mt-4" value={cover} setValue={setCover} />
 
-        <div className="w-[40%] mx-auto relative mt-5">
-          <ButtonSubmit onClick={() => setIsActive()}>
-            Submit Report
-          </ButtonSubmit>
+        <div className="flex gap-4 px-5 relative mt-5">
+          <ButtonSubmit onClick={() => setIsActive()}>Edit Report</ButtonSubmit>
+          <ButtonDelete onClick={() => setIsActive()}>Delete</ButtonDelete>
         </div>
       </section>
     </main>

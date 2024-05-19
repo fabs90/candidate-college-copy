@@ -41,7 +41,9 @@ export default function MyReport() {
             </div>
             <div className="flex gap-2 items-center">
               <button className="bg-secondary rounded-[4px] p-1">
-                <EditIcon />
+                <Link href={"/staff/weekly-report/edit/1"}>
+                  <EditIcon />
+                </Link>
               </button>
               <button className="bg-danger rounded-[4px] p-1">
                 <TrashIcon />

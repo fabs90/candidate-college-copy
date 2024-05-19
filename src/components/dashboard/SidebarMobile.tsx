@@ -19,9 +19,11 @@ export default function SidebarMobile({
   root,
   navLink,
   pathname,
+  profileLink,
 }: {
   root: string;
   navLink: any;
+  profileLink: string;
   pathname: any;
 }) {
   const { isActive } = useActive();
@@ -45,14 +47,20 @@ export default function SidebarMobile({
         />
       </div>
 
-      <div className="flex gap-3  relative justify-center w-full mt-5 px-4 ">
-        <Image
-          src="/assets/image/Avatar.png"
-          className="w-[48px] h-[48px] rounded-full"
-          width={100}
-          height={100}
-          alt="Photo Profile"
-        />
+      <div className="  relative   w-full mt-5 px-4 ">
+        <div
+          className={`${styles.border_link} ${
+            pathname.startsWith(profileLink) && styles.border_link_active
+          } justify-center px-3 py-2 flex gap-3 relative`}
+        >
+          <Image
+            src="/assets/image/Avatar.png"
+            className="w-[48px] h-[48px] rounded-full"
+            width={100}
+            height={100}
+            alt="Photo Profile"
+          />
+        </div>
       </div>
       <Separator />
       <div className="mt-4 px-4 overflow-y-auto mx-auto">
