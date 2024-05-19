@@ -9,6 +9,8 @@ import iconStyles from "@/styles/icon.module.css";
 import useActive from "@/hooks/useActive";
 // import Separator from "@/components/sidebar/Separator";
 import Link from "next/link";
+import Separator from "./Separator";
+import { LogoutIcon } from "../icons";
 // import useAlert from "@/hooks/useAlert";
 
 // Import Components
@@ -17,8 +19,10 @@ import Link from "next/link";
 export default function SidebarDesktop({
   navLink,
   pathname,
+  root,
 }: {
   navLink: any;
+  root: string;
   pathname: string;
 }) {
   const { isActive } = useActive();
@@ -33,9 +37,9 @@ export default function SidebarDesktop({
         isActive
           ? "  animate-hilang  !absolute inset-y-0"
           : "animate__animated animate__fadeIn"
-      }  flex flex-col bg-[#0000008F] h-full py-6 w-[256px] `}
+      }  flex flex-col bg-[#0D2735] h-full py-6 w-[256px] `}
     >
-      <div className="">
+      <div className="relative">
         <Image
           className="w-[142px]  h-[80px] mx-auto"
           alt="Logo Candidate College"
@@ -45,7 +49,7 @@ export default function SidebarDesktop({
         />
       </div>
 
-      <div className="flex gap-3  justify-center w-full mt-3 px-5 ">
+      <div className="flex gap-3 relative justify-center w-full mt-3 px-5 ">
         <Image
           src="/assets/image/Avatar.png"
           className="w-[48px] h-[48px] rounded-full"
@@ -60,19 +64,20 @@ export default function SidebarDesktop({
           <h3 className="font-medium text-[14px] text-white">Maudy Ayunda</h3>
         </div>
       </div>
-      {/* <Separator /> */}
+      <Separator />
       <div className="mt-4 px-4 overflow-y-auto">
         <ul className="flex mt-2 relative flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (
               <Link
+                id={title == "Weekly Report" ? "seventh-driver" : ""}
                 key={index}
                 href={path}
                 className={`${styles.border_link} ${
-                  path == "/academic-development"
+                  path == root
                     ? pathname == path && styles.border_link_active
                     : pathname.startsWith(path) && styles.border_link_active
-                } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#FFFFFF8F] text-[14px]`}
+                } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
               >
                 {icon} {title}
               </Link>
@@ -80,23 +85,11 @@ export default function SidebarDesktop({
           })}
         </ul>
       </div>
-      {/* <Separator /> */}
-      <div className="flex flex-auto justify-end  mt-4 mx-5 items-end">
-        <div className={`${styles.border_thankyou}  bg-[#1B4E6B1A] p-4`}>
-          <h3 className="text-center text-[16px] font-semibold text-white">
-            Thank You
-          </h3>
-          <h4 className="text-center px-3 mt-1 text-[13px] font-medium text-[#FFFFFF8F]">
-            For creating or adding new things
-          </h4>
-          <button
-            onClick={() => setOpen(true)}
-            className={` duration-300 ${iconStyles.logout_icon} hover:bg-primary transition-all hover:text-secondary p-3 drop-shadow-md justify-center rounded-xl items-center w-full  text-[14px] font-semibold bg-secondary flex gap-1`}
-          >
-            Log Out
-          </button>
-        </div>
-      </div>
+
+      <button className="flex relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end">
+        <LogoutIcon />{" "}
+        <span className="text-grey text-sm font-medium">Logout</span>
+      </button>
       {/* Logout Modal */}
       {/* <Logout open={open} onClick={handleClick} /> */}
     </section>

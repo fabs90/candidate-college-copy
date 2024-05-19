@@ -12,11 +12,15 @@ import Link from "next/link";
 // import useAlert from "@/hooks/useAlert";
 // import Logout from "../Logout";
 import { useState } from "react";
+import Separator from "./Separator";
+import { LogoutIcon } from "../icons";
 
 export default function SidebarMobile({
+  root,
   navLink,
   pathname,
 }: {
+  root: string;
   navLink: any;
   pathname: any;
 }) {
@@ -29,9 +33,9 @@ export default function SidebarMobile({
         isActive
           ? "z-20   animate__animated animate__fadeIn"
           : " animate__animated animate__fadeOut !absolute"
-      }   flex flex-col bg-[#0000008F] h-full py-6 w-[104px] `}
+      }   flex flex-col bg-[#0D2735] h-full py-6 w-[104px] `}
     >
-      <div className="py-2 px-4">
+      <div className="py-2 px-4 relative">
         <Image
           className="w-[60px] h-[60px] mx-auto"
           alt="Logo Candidate College"
@@ -41,7 +45,7 @@ export default function SidebarMobile({
         />
       </div>
 
-      <div className="flex gap-3  justify-center w-full mt-5 px-4 ">
+      <div className="flex gap-3  relative justify-center w-full mt-5 px-4 ">
         <Image
           src="/assets/image/Avatar.png"
           className="w-[48px] h-[48px] rounded-full"
@@ -50,7 +54,7 @@ export default function SidebarMobile({
           alt="Photo Profile"
         />
       </div>
-      {/* <Separator /> */}
+      <Separator />
       <div className="mt-4 px-4 overflow-y-auto mx-auto">
         <ul className="flex mt-2 relative z- flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
@@ -59,10 +63,10 @@ export default function SidebarMobile({
                 key={index}
                 href={path}
                 className={`${styles.border_link} ${
-                  path == "/academic-development"
+                  path == root
                     ? pathname == path && styles.border_link_active
                     : pathname.startsWith(path) && styles.border_link_active
-                } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#FFFFFF8F] text-[14px]`}
+                } rounded-[10px]  px-5 py-3 flex gap-4 items-center group text-[14px]`}
               >
                 {icon}
               </Link>
@@ -70,14 +74,11 @@ export default function SidebarMobile({
           })}
         </ul>
       </div>
-      {/* <Separator /> */}
+
       <div className="flex flex-auto justify-end mx-auto items-end">
         <div className={`w-full h-fit`}>
-          <button
-            onClick={() => setOpen(true)}
-            className={`duration-300 transition-all ${iconStyles.logout_icon} hover:bg-primary p-3 drop-shadow-md justify-center rounded-xl items-center w-full  text-[14px] font-semibold bg-secondary flex gap-1`}
-          >
-            {/* <LogoutIcon /> sadf */} asdfsa
+          <button onClick={() => setOpen(true)}>
+            <LogoutIcon />
           </button>
         </div>
       </div>

@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        "dash-nav": ["40px", "56px"],
+        "2.5xl": ["28px", "40px"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -20,6 +24,7 @@ const config: Config = {
         border: "rgba(255, 255, 255, 0.16)",
         tersier: "#90A3BF",
         grey: "#B3C4CE",
+        danger: "#D45B53",
       },
 
       animation: {

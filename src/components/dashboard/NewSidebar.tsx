@@ -36,24 +36,24 @@ export default function NewSidebar() {
   const navLink = [
     {
       title: "Dashboard",
-      path: "/academic-development",
+      path: "/staff",
       icon: <DashboardIcon />,
     },
     {
-      title: "Article",
-      path: "/academic-development/articles",
+      title: "Weekly Report",
+      path: "/staff/weekly-report",
       icon: <TaskSquareIcon />,
     },
   ];
 
   return (
-    <div className="fixed z-20 inset-y-0">
+    <div id="first-driver" className="fixed z-20 inset-y-0">
       {/* // <> */}
       <ButtonSidebar />
       {/* Sidebar mobile */}
-      <SidebarMobile pathname={pathname} navLink={navLink} />
+      <SidebarMobile pathname={pathname} root="/staff" navLink={navLink} />
       {/* Sidebar Desktop */}
-      <SidebarDesktop pathname={pathname} navLink={navLink} />
+      <SidebarDesktop pathname={pathname} root="/staff" navLink={navLink} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Alert from "@/components/dashboard/Alert";
 import NewSidebar from "@/components/dashboard/NewSidebar";
 import useActive from "@/hooks/useActive";
 
@@ -12,6 +13,7 @@ export default function LayoutSuperAdmin({
   return (
     <main className="flex w-full min-h-screen z-10 shadow-lg bg-primary text-primary">
       <NewSidebar />
+      <Alert />
       <div
         className={`transition-all z-10 bg-primary w-full min-h-screen ease-linear  duration-[400ms] absolute overflow-hidden ${
           isActive ? "pl-[104px]" : "pl-[256px]"
