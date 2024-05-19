@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/border.module.css";
 import { EmojiHappy } from "@/components/icons";
-import { Button } from "@/components/dashboard/Button";
+import Button from "@/components/dashboard/Button";
 import useDriver from "@/hooks/useDriver";
 import { useRouter } from "next/navigation";
 
@@ -24,7 +24,7 @@ export default function Alert() {
             Welcome to Candidate College Weekly Report
           </h1>
           <p className="text-grey mt-3 relative  text-center">
-            Let's take a tour to learn about how to use this website.
+            Let&apos;s take a tour to learn about how to use this website.
           </p>
         </div>
         <Button

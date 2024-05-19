@@ -1,6 +1,6 @@
 import styles from "@/styles/border.module.css";
 import Image from "next/image";
-import { Button } from "./Button";
+import Button from "./Button";
 export default function EditReport() {
   return (
     <section

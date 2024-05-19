@@ -7,7 +7,7 @@ import Textarea from "@/components/dashboard/weekly-report/Textarea";
 import Navbar from "@/components/dashboard/Navbar";
 import DropInputFile from "@/components/dashboard/weekly-report/DropInputFile";
 import { useState } from "react";
-import { Button } from "@/components/dashboard/weekly-report/Button";
+import Button from "@/components/dashboard/weekly-report/Button";
 
 export default function DashboardStaffPage() {
   const [cover, setCover] = useState<Blob | string>("");
