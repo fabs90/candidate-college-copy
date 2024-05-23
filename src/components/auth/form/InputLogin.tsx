@@ -1,6 +1,6 @@
 import { FieldApi, FormApi } from "@tanstack/react-form";
-import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { HTMLInputTypeAttribute } from "react";
+
 import { z } from "zod";
 
 function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
