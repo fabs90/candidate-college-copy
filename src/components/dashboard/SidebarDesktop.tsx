@@ -89,7 +89,13 @@ export default function SidebarDesktop({
             return (
               <Link key={index} href={path}>
                 <div
-                  id={title == "Weekly Report" ? "seventh-driver" : ""}
+                  id={
+                    title == "Weekly Report"
+                      ? "seventh-driver"
+                      : title == "My Staff Report"
+                      ? "nine-driver"
+                      : ""
+                  }
                   className={`${styles.border_link} ${
                     path == root
                       ? pathname == path && styles.border_link_active

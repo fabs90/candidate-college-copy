@@ -89,7 +89,7 @@ export default function useDriverHead() {
           side: "right",
           align: "center",
           onNextClick: () => {
-            router.push("/staff/weekly-report");
+            router.push("/head/weekly-report");
             setTimeout(function () {
               driverObj.moveNext();
             }, 100);
@@ -105,7 +105,70 @@ export default function useDriverHead() {
           side: "bottom",
           align: "center",
           onPrevClick: () => {
-            router.push("/staff");
+            router.push("/head");
+            setTimeout(function () {
+              driverObj.movePrevious();
+            }, 100);
+          },
+        },
+      },
+      {
+        element: "#nine-driver",
+        popover: {
+          title: "Click Here to See All Staff Reports",
+          description: "You can access all your staff reports from this menu.",
+          side: "right",
+          align: "center",
+          onNextClick: () => {
+            router.push("/head/my-staff-report");
+            setTimeout(function () {
+              driverObj.moveNext();
+            }, 100);
+          },
+        },
+      },
+      {
+        element: "#ten-driver",
+        popover: {
+          title: "Choose Your Staff to See Their Report",
+          description:
+            "You can see all your staff reports and filter based on month and week.",
+          side: "right",
+          align: "center",
+          onPrevClick: () => {
+            router.push("/head/weekly-report");
+            setTimeout(function () {
+              driverObj.movePrevious();
+            }, 100);
+          },
+        },
+      },
+      {
+        element: "#eleven-driver",
+        popover: {
+          title: "Click Here to Add Feedback",
+          description:
+            "You can add monthly feedback for your staff by accessing this menu.",
+          side: "right",
+          align: "center",
+          onNextClick: () => {
+            router.push("/head/feedback/add/july");
+            setTimeout(function () {
+              driverObj.moveNext();
+            }, 100);
+          },
+        },
+      },
+      {
+        element: "#twelve-driver",
+        popover: {
+          title: "Choose Staff and Write Your Feedback",
+          description:
+            "Please note that you can’t edit your feedback after it is submitted.",
+          side: "right",
+          align: "center",
+          onPrevClick: () => {
+            router.push("/head/my-staff-report");
             setTimeout(function () {
               driverObj.movePrevious();
             }, 100);

@@ -12,10 +12,10 @@ export default function SidebarMenu({
   path: string;
   data: { title: string; icon: React.ReactNode; data: any[] };
 }) {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const pathname = usePathname();
   return (
-    <>
+    <div className="w-full  relative">
       <button
         onClick={() => setIsActive((v) => !v)}
         className={`${styles.border_link} ${
@@ -49,7 +49,7 @@ export default function SidebarMenu({
                 className={`${styles.border_link} ${
                   pathname.startsWith(v.url) && styles.border_link_active
                 } ${
-                  mode == "MOBILE" && "w-fit"
+                  mode == "MOBILE" ? "w-fit" : "w-full"
                 } rounded-[10px] px-5 py-3 flex flex-col gap-4 text-[#8DA6B5] hover:text-white text-[14px]`}
               >
                 {mode == "DESKTOP" ? (
@@ -62,6 +62,6 @@ export default function SidebarMenu({
           })}
         </ul>
       </div>
-    </>
+    </div>
   );
 }

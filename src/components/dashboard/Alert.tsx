@@ -9,8 +9,16 @@ import useDriverHead from "@/hooks/useDriverHead";
 
 export default function Alert({ root }: { root: string }) {
   const [isActive, setIsActive] = useState<boolean>(true);
-  const { driverObj: driverObjStaff } = useDriverStaff();
-  const { driverObj: driverObjHead } = useDriverHead();
+  let driver: any;
+  switch (root) {
+    case "/staff":
+      driver = useDriverStaff().driverObj;
+      break;
+    case "/head":
+      driver = useDriverHead().driverObj;
+      break;
+  }
+
   const router = useRouter();
   return (
     <div
@@ -35,14 +43,7 @@ export default function Alert({ root }: { root: string }) {
             setIsActive(false);
             router.push(root);
             setTimeout(function () {
-              switch (root) {
-                case "/staff":
-                  driverObjStaff.drive();
-                  break;
-                case "/head":
-                  driverObjHead.drive();
-                  break;
-              }
+              driver.drive();
             }, 100);
           }}
         >
