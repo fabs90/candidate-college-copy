@@ -2,14 +2,13 @@ import { useState } from "react";
 import styles from "@/styles/border.module.css";
 import { CloseIcon, TickCircle } from "@/components/icons";
 import Button from "@/components/dashboard/Button";
-import useDriver from "@/hooks/useDriver";
+
 import { useRouter } from "next/navigation";
 import useSuccessReport from "@/hooks/useSuccessReport";
 
 export default function Success() {
   const { isActive, setIsActive } = useSuccessReport();
 
-  const { driverObj } = useDriver();
   const router = useRouter();
   return (
     <div
