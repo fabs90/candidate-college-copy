@@ -44,6 +44,7 @@ export default function SidebarMenu({
           {data.data.map((v, index) => {
             return (
               <Link
+                key={index}
                 href={v.url}
                 className={`${styles.border_link} ${
                   pathname.startsWith(v.url) && styles.border_link_active

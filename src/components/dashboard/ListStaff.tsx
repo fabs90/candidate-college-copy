@@ -25,7 +25,7 @@ export default function ListStaff({ data }: { data: { name: string }[] }) {
         </button>
         {data.map((v, index) => {
           return (
-            <div className="flex flex-col gap-2 items-center">
+            <div key={index} className="flex flex-col gap-2 items-center">
               <Image
                 src={"/assets/image/Avatar.png"}
                 className="w-[36px] aspect-square rounded-full"
