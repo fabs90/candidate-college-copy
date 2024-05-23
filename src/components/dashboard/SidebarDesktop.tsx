@@ -11,6 +11,7 @@ import useActive from "@/hooks/useActive";
 import Link from "next/link";
 import Separator from "./Separator";
 import { LogoutIcon } from "../icons";
+import useLogout from "@/hooks/useLogout";
 // import useAlert from "@/hooks/useAlert";
 
 // Import Components
@@ -28,11 +29,11 @@ export default function SidebarDesktop({
   pathname: string;
 }) {
   const { isActive } = useActive();
-
-  const [open, setOpen] = useState<boolean>(false);
+  const { setIsActive } = useLogout();
+  // const [open, setOpen] = useState<boolean>(false);
 
   // Used to open log out popup
-  const handleClick = () => setOpen(false);
+  // const handleClick = () => setOpen(false);
   return (
     <section
       className={`${styles.border_nav}  z-10 transition-all ${
@@ -101,7 +102,10 @@ export default function SidebarDesktop({
         </ul>
       </div>
 
-      <button className="flex relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end">
+      <button
+        onClick={() => setIsActive()}
+        className="flex relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end"
+      >
         <LogoutIcon />{" "}
         <span className="text-grey text-sm font-medium">Logout</span>
       </button>

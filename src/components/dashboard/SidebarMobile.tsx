@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Separator from "./Separator";
 import { LogoutIcon } from "../icons";
+import useLogout from "@/hooks/useLogout";
 
 export default function SidebarMobile({
   root,
@@ -27,8 +28,9 @@ export default function SidebarMobile({
   pathname: any;
 }) {
   const { isActive } = useActive();
-  const handleClick = () => setOpen(false);
-  const [open, setOpen] = useState<boolean>(false);
+  // const handleClick = () => setOpen(false);
+  const { setIsActive } = useLogout();
+  // const [open, setOpen] = useState<boolean>(false);
   return (
     <section
       className={`${styles.border_nav}  transition-all ${
@@ -83,9 +85,9 @@ export default function SidebarMobile({
         </ul>
       </div>
 
-      <div className="flex flex-auto justify-end mx-auto items-end">
+      <div className="flex flex-auto relative justify-end mx-auto items-end">
         <div className={`w-full h-fit`}>
-          <button onClick={() => setOpen(true)}>
+          <button onClick={() => setIsActive()}>
             <LogoutIcon />
           </button>
         </div>

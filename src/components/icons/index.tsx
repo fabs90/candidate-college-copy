@@ -9,6 +9,7 @@ import EmojiHappy from "./EmojiHappy";
 import Trash2Icon from "./Trash2";
 import CloseIcon from "./Close";
 import TickCircle from "./TickCircle";
+import InformationIcon from "./Information";
 import CameraIcon from "./Camera";
 
 export {
@@ -20,6 +21,7 @@ export {
   StarIcon,
   TrashIcon,
   LogoutIcon,
+  InformationIcon,
   TaskSquareIcon,
   CloseIcon,
   MedalIcon,
