@@ -1,12 +1,14 @@
 "use client";
 
 import useActive from "@/hooks/useActive";
-import ButtonSidebar from "./ButtonSidebar";
-import SidebarDesktop from "./SidebarDesktop";
-import SidebarMobile from "./SidebarMobile";
+
 import { usePathname } from "next/navigation";
 import "animate.css";
-import { DashboardIcon, TaskSquareIcon } from "../icons";
+
+import ButtonSidebar from "../ButtonSidebar";
+import SidebarMobile from "../SidebarMobile";
+import SidebarDesktop from "../SidebarDesktop";
+import { DashboardIcon, TaskSquareIcon } from "@/components/icons";
 
 // import Image from "next/image";
 // import Link from "next/link";

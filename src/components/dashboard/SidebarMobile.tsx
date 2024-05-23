@@ -21,9 +21,11 @@ export default function SidebarMobile({
   navLink,
   pathname,
   profileLink,
+  children,
 }: {
   root: string;
   navLink: any;
+  children?: React.ReactNode;
   profileLink: string;
   pathname: any;
 }) {
@@ -65,8 +67,8 @@ export default function SidebarMobile({
         </div>
       </div>
       <Separator />
-      <div className="mt-4 px-4 overflow-y-auto mx-auto">
-        <ul className="flex mt-2 relative z- flex-col">
+      <div className="mt-4 px-4 overflow-y-auto rm-scroll mx-auto">
+        <div className="flex mt-2 relative   flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (
               <Link
@@ -76,13 +78,14 @@ export default function SidebarMobile({
                   path == root
                     ? pathname == path && styles.border_link_active
                     : pathname.startsWith(path) && styles.border_link_active
-                } rounded-[10px]  px-5 py-3 flex gap-4 items-center group text-[14px]`}
+                } w-fit rounded-[10px]  px-5 py-3 flex gap-4 items-center group text-[14px]`}
               >
                 {icon}
               </Link>
             );
           })}
-        </ul>
+          {children}
+        </div>
       </div>
 
       <div className="flex flex-auto relative justify-end mx-auto items-end">

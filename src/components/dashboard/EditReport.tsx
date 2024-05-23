@@ -21,7 +21,7 @@ export default function EditReport() {
         </h4>
 
         <p className="text-sm text-grey">Do you want to edit your report?</p>
-        <Button>Edit Button</Button>
+        <Button>Edit Report</Button>
       </div>
     </section>
   );

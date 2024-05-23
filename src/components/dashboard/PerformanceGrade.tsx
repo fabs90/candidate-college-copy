@@ -21,7 +21,7 @@ export default function PerformanceGrade() {
   return (
     <section
       id="fifth-driver"
-      className={`${styles.border_section}  relative rounded-[8px]  p-5 bg-[#0D2735]`}
+      className={`${styles.border_section} h-full  relative rounded-[8px]  p-5 bg-[#0D2735]`}
     >
       <div className="flex items-center justify-between relative">
         <h3>Performance Grade</h3>

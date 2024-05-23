@@ -21,10 +21,12 @@ export default function SidebarDesktop({
   navLink,
   profileLink,
   pathname,
+  children,
   root,
 }: {
   navLink: any;
   profileLink: string;
+  children?: React.ReactNode;
   root: string;
   pathname: string;
 }) {
@@ -81,33 +83,36 @@ export default function SidebarDesktop({
         </div>
       </div>
       <Separator />
-      <div className="mt-4 px-4 overflow-y-auto">
-        <ul className="flex mt-2 relative flex-col">
+      <div className="mt-4 px-4">
+        <div className="flex mt-2 relative flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (
-              <Link
-                id={title == "Weekly Report" ? "seventh-driver" : ""}
-                key={index}
-                href={path}
-                className={`${styles.border_link} ${
-                  path == root
-                    ? pathname == path && styles.border_link_active
-                    : pathname.startsWith(path) && styles.border_link_active
-                } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
-              >
-                {icon} {title}
+              <Link key={index} href={path}>
+                <div
+                  id={title == "Weekly Report" ? "seventh-driver" : ""}
+                  className={`${styles.border_link} ${
+                    path == root
+                      ? pathname == path && styles.border_link_active
+                      : pathname.startsWith(path) && styles.border_link_active
+                  } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
+                >
+                  {icon} {title}
+                </div>
               </Link>
             );
           })}
-        </ul>
+          {children}
+        </div>
       </div>
 
-      <button
-        onClick={() => setIsActive()}
-        className="flex relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end"
-      >
-        <LogoutIcon />{" "}
-        <span className="text-grey text-sm font-medium">Logout</span>
+      <button className="flex cursor-default relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end">
+        <div
+          className="flex gap-2 relative cursor-pointer"
+          onClick={() => setIsActive()}
+        >
+          <LogoutIcon />
+          <span className="text-grey text-sm font-medium">Logout</span>
+        </div>{" "}
       </button>
       {/* Logout Modal */}
       {/* <Logout open={open} onClick={handleClick} /> */}

@@ -2,7 +2,7 @@
 
 import Alert from "@/components/dashboard/Alert";
 import Logout from "@/components/dashboard/Logout";
-import NewSidebar from "@/components/dashboard/staff/NewSidebar";
+import NewSidebar from "@/components/dashboard/head/NewSidebar";
 
 import Success from "@/components/dashboard/weekly-report/Success";
 import useActive from "@/hooks/useActive";
@@ -17,7 +17,7 @@ export default function LayoutSuperAdmin({
   return (
     <main className="flex w-full min-h-screen z-10 shadow-lg bg-primary text-primary">
       <NewSidebar />
-      <Alert root="/staff" />
+      <Alert root="/head" />
       <Success />
       <Logout />
       <div

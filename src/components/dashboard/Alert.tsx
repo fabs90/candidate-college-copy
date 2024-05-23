@@ -5,7 +5,7 @@ import Button from "@/components/dashboard/Button";
 import useDriver from "@/hooks/useDriver";
 import { useRouter } from "next/navigation";
 
-export default function Alert() {
+export default function Alert({ root }: { root: string }) {
   const [isActive, setIsActive] = useState<boolean>(true);
   const { driverObj } = useDriver();
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function Alert() {
         <Button
           onClick={() => {
             setIsActive(false);
-            router.push("/staff");
+            router.push(root);
             setTimeout(function () {
               driverObj.drive();
             }, 100);
