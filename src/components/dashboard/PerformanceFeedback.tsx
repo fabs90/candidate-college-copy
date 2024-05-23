@@ -5,7 +5,7 @@ export default function PerformanceFeedback() {
   return (
     <section
       id="sixth-driver"
-      className={`${styles.border_section} mt-5 relative rounded-[8px]  p-5 bg-[#0D2735]`}
+      className={`${styles.border_section}  relative rounded-[8px]  p-5 bg-[#0D2735]`}
     >
       <div className="bg-secondary pl-2 pb-2 flex justify-center items-center   absolute right-0 top-0 rounded-bl-full  w-12 h-12">
         <StarIcon />

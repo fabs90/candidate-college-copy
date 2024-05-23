@@ -26,7 +26,7 @@ export default function DashboardStaffPage() {
           <ListStaff data={staff} />
           <MyReport />
         </div>
-        <div className="flex flex-col w-full  h-full">
+        <div className="flex flex-col w-full gap-5  h-full">
           <PerformanceGrade />
 
           <PerformanceFeedback />
