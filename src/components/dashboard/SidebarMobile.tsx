@@ -1,17 +1,11 @@
 import Image from "next/image";
 
-// import { LogoutIcon } from "@/components/icons";
-import { usePathname } from "next/navigation";
-
 import styles from "@/styles/border.module.css";
 
-import iconStyles from "@/styles/icon.module.css";
 import useActive from "@/hooks/useActive";
-// import Separator from "@/components/sidebar/Separator";
+
 import Link from "next/link";
-// import useAlert from "@/hooks/useAlert";
-// import Logout from "../Logout";
-import { useState } from "react";
+
 import Separator from "./Separator";
 import { LogoutIcon } from "../icons";
 import useLogout from "@/hooks/useLogout";

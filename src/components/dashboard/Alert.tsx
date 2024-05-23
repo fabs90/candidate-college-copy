@@ -4,20 +4,11 @@ import { EmojiHappy } from "@/components/icons";
 import Button from "@/components/dashboard/Button";
 
 import { useRouter } from "next/navigation";
-import useDriverStaff from "@/hooks/useDriverStaff";
-import useDriverHead from "@/hooks/useDriverHead";
+import useDriver from "@/hooks/useDriver";
 
 export default function Alert({ root }: { root: string }) {
   const [isActive, setIsActive] = useState<boolean>(true);
-  let driver: any;
-  switch (root) {
-    case "/staff":
-      driver = useDriverStaff().driverObj;
-      break;
-    case "/head":
-      driver = useDriverHead().driverObj;
-      break;
-  }
+  const { driverObj } = useDriver({ root });
 
   const router = useRouter();
   return (
@@ -43,7 +34,7 @@ export default function Alert({ root }: { root: string }) {
             setIsActive(false);
             router.push(root);
             setTimeout(function () {
-              driver.drive();
+              driverObj.drive();
             }, 100);
           }}
         >
