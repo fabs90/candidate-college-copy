@@ -14,7 +14,7 @@ export default function Select({ data }: { data: SelectReport[] }) {
         return (
           <option
             key={index}
-            className="bg-white hover:bg-secondary"
+            className="bg-white !p-2 hover:bg-secondary"
             value={value}
           >
             {name}

@@ -72,7 +72,7 @@ export default function SidebarMobile({
                   path == root
                     ? pathname == path && styles.border_link_active
                     : pathname.startsWith(path) && styles.border_link_active
-                } w-fit rounded-[10px]  px-5 py-3 flex gap-4 items-center group text-[14px]`}
+                } w-full rounded-[10px]  px-5 py-3 flex gap-4 items-center justify-center group text-[14px]`}
               >
                 {icon}
               </Link>

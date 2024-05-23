@@ -61,7 +61,7 @@ export default function SidebarDesktop({
           } relative`}
         >
           <Link
-            href={"/staff/profile/edit/1"}
+            href={`${profileLink}`}
             className="justify-center px-3 py-2 flex gap-3 relative"
           >
             <Image
@@ -84,7 +84,7 @@ export default function SidebarDesktop({
       </div>
       <Separator />
       <div className="mt-4 px-4">
-        <div className="flex mt-2 relative flex-col">
+        <div className="flex mt-2 h-full relative flex-col">
           {navLink.map(({ title, path, icon }: any, index: number) => {
             return (
               <Link key={index} href={path}>
@@ -111,7 +111,7 @@ export default function SidebarDesktop({
         </div>
       </div>
 
-      <button className="flex cursor-default relative flex-auto pl-4 gap-2   mt-4 mx-5 items-end">
+      <button className="flex bg-[#0D2735] pl-4 inset-x-0  cursor-default absolute bottom-0 flex-auto py-5 gap-2   mt-4 mx-5 items-end">
         <div
           className="flex gap-2 relative cursor-pointer"
           onClick={() => setIsActive()}

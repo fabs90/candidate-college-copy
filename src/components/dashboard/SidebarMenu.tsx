@@ -9,19 +9,19 @@ export default function SidebarMenu({
   data,
 }: {
   mode: "MOBILE" | "DESKTOP";
-  path: string;
+  path: string | RegExp;
   data: { title: string; icon: React.ReactNode; data: any[] };
 }) {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   return (
     <div className="w-full  relative">
       <button
         onClick={() => setIsActive((v) => !v)}
         className={`${styles.border_link} ${
-          pathname.startsWith(path) && styles.border_link_active
-        } rounded-[10px] ${
-          mode == "DESKTOP" ? "w-full" : "w-fit"
+          pathname.match(path) && styles.border_link_active
+        } rounded-[10px] w-full ${
+          mode == "MOBILE" && "justify-center"
         }  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
       >
         {mode == "DESKTOP" ? (
@@ -48,8 +48,6 @@ export default function SidebarMenu({
                 href={v.url}
                 className={`${styles.border_link} ${
                   pathname.startsWith(v.url) && styles.border_link_active
-                } ${
-                  mode == "MOBILE" ? "w-fit" : "w-full"
                 } rounded-[10px] px-5 py-3 flex flex-col gap-4 text-[#8DA6B5] hover:text-white text-[14px]`}
               >
                 {mode == "DESKTOP" ? (

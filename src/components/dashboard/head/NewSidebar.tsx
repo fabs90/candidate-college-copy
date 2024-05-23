@@ -42,7 +42,7 @@ export default function NewSidebar() {
     },
   ];
 
-  const linkProfile = "/head/profile";
+  const linkProfile = "/head/profile/edit/1";
 
   return (
     <div id="first-driver" className="fixed z-20 inset-y-0">
