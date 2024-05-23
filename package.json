@@ -11,14 +11,19 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@tanstack/react-form": "^0.19.5",
-    "@tanstack/react-query": "^5.36.0",
+    "@tanstack/react-query": "^5.37.1",
     "@tanstack/zod-form-adapter": "^0.19.5",
+    "@tinymce/tinymce-react": "^5.0.1",
+    "animate.css": "^4.1.1",
     "axios": "^1.6.8",
+    "driver.js": "^1.3.1",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropzone": "^14.2.3",
     "react-icons": "^5.2.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -7,10 +7,10 @@ export default function InfoSection() {
         <div className="absolute z-10 m-8">
           <Image
             alt="Logo CC"
-            className="w-full h-full"
+            className="w-[120px]"
             height={100}
             width={100}
-            src={"/assets/image/logo-cc.png"}
+            src={"/assets/image/logo-full-cc.png"}
           />
         </div>
         <div className="absolute bottom-0 m-8 z-10">

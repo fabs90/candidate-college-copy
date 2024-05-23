@@ -1,4 +1,4 @@
-import { LoginScheme } from "@/app/validation/LoginScheme";
+import { LoginScheme } from "@/validation/LoginScheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "@tanstack/react-form";
 import { MutationFunction, useMutation } from "@tanstack/react-query";
@@ -21,7 +21,7 @@ export default function useAddData({ url, isMultipart = false }: addData) {
         }),
       });
     },
-    onError: (error: any, variables, context) => {
+    onError: (error: any, variables: any, context: any) => {
       console.log(error);
     },
   });
