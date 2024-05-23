@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import styles from "@/styles/border.module.css";
 import { EmojiHappy } from "@/components/icons";
 import Button from "@/components/dashboard/Button";
-import useDriver from "@/hooks/useDriver";
+
 import { useRouter } from "next/navigation";
+import useDriverStaff from "@/hooks/useDriverStaff";
+import useDriverHead from "@/hooks/useDriverHead";
 
 export default function Alert({ root }: { root: string }) {
   const [isActive, setIsActive] = useState<boolean>(true);
-  const { driverObj } = useDriver();
+  const { driverObj: driverObjStaff } = useDriverStaff();
+  const { driverObj: driverObjHead } = useDriverHead();
   const router = useRouter();
   return (
     <div
@@ -32,7 +35,14 @@ export default function Alert({ root }: { root: string }) {
             setIsActive(false);
             router.push(root);
             setTimeout(function () {
-              driverObj.drive();
+              switch (root) {
+                case "/staff":
+                  driverObjStaff.drive();
+                  break;
+                case "/head":
+                  driverObjHead.drive();
+                  break;
+              }
             }, 100);
           }}
         >

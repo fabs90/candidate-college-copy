@@ -1,7 +1,7 @@
 import { driver } from "driver.js";
 import { useRouter } from "next/navigation";
 
-export default function useDriver() {
+export default function useDriverHead() {
   const router = useRouter();
   const driverObj = driver({
     showProgress: true, // Because everyone loves progress bars!
@@ -37,6 +37,16 @@ export default function useDriver() {
           title: "See Your Completion Rate",
           description:
             "You can see how many percent is your weekly report completion.",
+          side: "right",
+          align: "center",
+        },
+      },
+      {
+        element: "#fourth2-driver",
+        popover: {
+          title: "See Your Staff Report Completion",
+          description:
+            "Here you can see which of your staff that have and have not filled out today’s report.",
           side: "right",
           align: "center",
         },
