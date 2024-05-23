@@ -80,7 +80,7 @@ export default function MyStaffReportPage() {
                 className="text-white outline-none text-sm mt-2 w-full  px-[18px] py-4 border rounded-[4px] bg-transparent border-grey"
               ></textarea>
               <div className="flex mt-3 justify-center mx-auto w-[90%]">
-                <ButtonSubmit>Submit Feedback</ButtonSubmit>
+                <ButtonSubmit>Sunmit Feedback</ButtonSubmit>
               </div>
             </div>
           </div>
