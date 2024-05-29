@@ -12,6 +12,7 @@ import Link from "next/link";
 import Separator from "./Separator";
 import { LogoutIcon } from "../icons";
 import useLogout from "@/hooks/useLogout";
+import { usePathname } from "next/navigation";
 // import useAlert from "@/hooks/useAlert";
 
 // Import Components
@@ -20,18 +21,18 @@ import useLogout from "@/hooks/useLogout";
 export default function SidebarDesktop({
   navLink,
   profileLink,
-  pathname,
+
   children,
   root,
 }: {
-  navLink: any;
+  navLink: any[];
   profileLink: string;
   children?: React.ReactNode;
   root: string;
-  pathname: string;
 }) {
   const { isActive } = useActive();
   const { setIsActive } = useLogout();
+  const pathname = usePathname();
   // const [open, setOpen] = useState<boolean>(false);
 
   // Used to open log out popup
@@ -57,7 +58,7 @@ export default function SidebarDesktop({
       <div className={`relative  w-full mt-3 px-5`}>
         <div
           className={`${styles.border_link} ${
-            pathname.startsWith(profileLink) && styles.border_link_active
+            pathname.match(profileLink) && styles.border_link_active
           } relative`}
         >
           <Link
@@ -85,28 +86,30 @@ export default function SidebarDesktop({
       <Separator />
       <div className="mt-4 px-4">
         <div className="flex mt-2 h-full relative flex-col">
-          {navLink.map(({ title, path, icon }: any, index: number) => {
-            return (
-              <Link key={index} href={path}>
-                <div
-                  id={
-                    title == "Weekly Report"
-                      ? "seventh-driver"
-                      : title == "My Staff Report"
-                      ? "nine-driver"
-                      : ""
-                  }
-                  className={`${styles.border_link} ${
-                    path == root
-                      ? pathname == path && styles.border_link_active
-                      : pathname.startsWith(path) && styles.border_link_active
-                  } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
-                >
-                  {icon} {title}
-                </div>
-              </Link>
-            );
-          })}
+          {navLink
+            .filter((v) => !v.menu)
+            .map(({ title, path, icon }: any, index: number) => {
+              return (
+                <Link key={index} href={path}>
+                  <div
+                    id={
+                      title == "Weekly Report"
+                        ? "seventh-driver"
+                        : title == "My Staff Report"
+                        ? "nine-driver"
+                        : ""
+                    }
+                    className={`${styles.border_link} ${
+                      path == root
+                        ? pathname == path && styles.border_link_active
+                        : pathname.match(path) && styles.border_link_active
+                    } rounded-[10px]  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
+                  >
+                    {icon} {title}
+                  </div>
+                </Link>
+              );
+            })}
           {children}
         </div>
       </div>
