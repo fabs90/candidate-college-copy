@@ -13,6 +13,9 @@ import CloseIcon from "./Close";
 import TickCircle from "./TickCircle";
 import InformationIcon from "./Information";
 import PeopleIcon from "./People";
+import CloseCircleIcon from "./CloseCircle";
+import CopyIcon from "./Copy";
+import TickIcon from "./Tick";
 import CameraIcon from "./Camera";
 
 export {
@@ -23,9 +26,12 @@ export {
   Trash2Icon,
   PeopleIcon,
   EmojiHappy,
+  TickIcon,
   StarIcon,
+  CloseCircleIcon,
   TrashIcon,
   MessageAddIcon,
+  CopyIcon,
   LogoutIcon,
   InformationIcon,
   TaskSquareIcon,

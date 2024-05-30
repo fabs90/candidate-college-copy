@@ -34,9 +34,7 @@ export default function InputLogin({
       <form.Field
         name={name}
         validators={{
-          onChange: z
-            .string()
-            .min(3, "First name must be at least 3 characters"),
+          onChange: z.string().email("Only email valid"),
           onChangeAsyncDebounceMs: 500,
           onChangeAsync: z.string().refine(
             async (value) => {
@@ -54,7 +52,8 @@ export default function InputLogin({
           return (
             <>
               <label className="block" htmlFor={field.name}>
-                {name}
+                {name.charAt(0).toUpperCase()}
+                {name.slice(1)}
               </label>
               <input
                 id={field.name}
