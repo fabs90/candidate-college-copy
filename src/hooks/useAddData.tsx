@@ -1,8 +1,5 @@
-import { LoginScheme } from "@/validation/LoginScheme";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "@tanstack/react-form";
-import { MutationFunction, useMutation } from "@tanstack/react-query";
-import { zodValidator } from "@tanstack/zod-form-adapter";
+import { useMutation } from "@tanstack/react-query";
+
 import axios from "axios";
 
 type addData = {

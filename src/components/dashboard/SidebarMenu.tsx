@@ -10,7 +10,7 @@ export default function SidebarMenu({
 }: {
   mode: "MOBILE" | "DESKTOP";
   path: string | RegExp;
-  data: { title: string; icon: React.ReactNode; data: any[] };
+  data: { title: string; icon: React.ReactNode; menu: any[] };
 }) {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
@@ -41,7 +41,7 @@ export default function SidebarMenu({
         } overflow-hidden relative rounded-[10px]  text-[#8DA6B5]  text-[14px]`}
       >
         <ul>
-          {data.data.map((v, index) => {
+          {data.menu.map((v, index) => {
             return (
               <Link
                 key={index}
