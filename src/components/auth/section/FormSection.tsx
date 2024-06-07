@@ -8,7 +8,7 @@ import useAddData from "@/hooks/useAddData";
 
 export default function FormSection() {
   const [rememberme, setRememberme] = useState<boolean>(false);
-  const { mutation } = useAddData({ url: "/test" });
+  const { mutation } = useAddData({ url: "/login" });
   const form = useForm({
     defaultValues: {
       email: "",
