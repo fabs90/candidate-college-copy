@@ -21,10 +21,11 @@ import { usePathname } from "next/navigation";
 export default function SidebarDesktop({
   navLink,
   profileLink,
-
+  value,
   children,
   root,
 }: {
+  value: { name: string; division: string; image: string };
   navLink: any[];
   profileLink: string;
   children?: React.ReactNode;
@@ -74,10 +75,10 @@ export default function SidebarDesktop({
             />
             <div className="flex flex-col justify-center">
               <h3 className="font-medium text-[14px] text-white">
-                Naruto Uzumaki
+                {value.name}
               </h3>
               <h4 className="text-[10px] uppercase text-grey font-medium">
-                WEB DEVELOPMENT
+                {value.division?.toUpperCase()}
               </h4>
             </div>
           </Link>

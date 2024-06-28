@@ -67,7 +67,7 @@ export default function LayoutSuperAdmin({
     },
   ];
 
-  const linkProfile = "/c-level/profile/edit/1";
+  const linkProfile = "/c-level/profile/edit";
   //    {!path.match(/\/c-level\/division-kpi\/.*/i) && <Alert root="/c-level" />}
   return (
     <main className="flex w-full min-h-screen z-10 shadow-lg bg-primary text-primary">

@@ -14,23 +14,20 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { getToken } from "@/utils/token";
 import useDeleteReport from "@/hooks/useDeleteReport";
-
 import useError from "@/hooks/useError";
 
 export default function DashboardStaffPage() {
   const [image, setImage] = useState<Blob | string>("");
   const [date, setDate] = useState<string>("");
   const [report, setReport] = useState<string>("");
-  const { setIsActive: setError } = useError();
   const params = useParams();
   const token = getToken();
   const { setIsActive } = useSuccess();
   const { isActive, setIsActive: setIsActiveDelete } = useDeleteReport();
+  const { setIsActive: setError } = useError();
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log(image, date, report);
-    console.log(isActive);
     try {
       const formData = new FormData();
       formData.append("report", report);
@@ -52,8 +49,13 @@ export default function DashboardStaffPage() {
         },
       ]);
     } catch (e) {
-      setError([{ title: "Failed", message: "Try again soon" }]);
       console.log(e);
+      setError([
+        {
+          title: "Failed!",
+          message: "Try again soon",
+        },
+      ]);
     }
   };
   useEffect(() => {

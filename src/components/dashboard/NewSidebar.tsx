@@ -7,7 +7,7 @@ import SidebarMobile from "./SidebarMobile";
 import SidebarMenu from "./SidebarMenu";
 import SidebarDesktop from "./SidebarDesktop";
 import useActive from "@/hooks/useActive";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { getId, getToken } from "@/utils/token";
@@ -30,24 +30,29 @@ export default function NewSidebar({
   root,
 }: SidebarProps) {
   const { isActive } = useActive();
-  // const token = getToken();
-  // const uuid = getId();
-  // const jwtdecode = jwtDecode(token);
+  const [account, setAccount] = useState<any>({});
+  const token = getToken();
+  const uuid = getId();
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const user = await axios.get(`/api/authz/users/${uuid}`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const user = await axios.get(`/api/authz/users/${uuid}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setAccount({
+          name: user.data?.data?.name,
+          image: user.data?.data?.image,
+          division: user.data?.data?.division?.name,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUser();
+  }, []);
 
   return (
     <div id="first-driver" className="fixed z-20 inset-y-0">
@@ -92,7 +97,12 @@ export default function NewSidebar({
           })}
       </SidebarMobile>
       {/* Sidebar Desktop */}
-      <SidebarDesktop profileLink={linkProfile} root={root} navLink={navLink}>
+      <SidebarDesktop
+        value={account}
+        profileLink={linkProfile}
+        root={root}
+        navLink={navLink}
+      >
         {navLink
           .filter((v) => v.menu)
           .map((v, i) => {
