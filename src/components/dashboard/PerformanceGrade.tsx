@@ -1,8 +1,9 @@
+import { useState } from "react";
 import Progress, { ProgressType } from "./Progress";
 import Select from "./Select";
 import styles from "@/styles/border.module.css";
 
-const month = [
+const monthSelect = [
   { name: "Jun", value: "jun" },
   { name: "Jul", value: "jul" },
   { name: "Aug", value: "aug" },
@@ -18,6 +19,7 @@ const performance: ProgressType[] = [
 ];
 
 export default function PerformanceGrade() {
+  const [month, setMonth] = useState<string>(monthSelect[0].value);
   return (
     <section
       id="fifth-driver"
@@ -25,7 +27,7 @@ export default function PerformanceGrade() {
     >
       <div className="flex items-center justify-between relative">
         <h3>Performance Grade</h3>
-        <Select data={month} />
+        <Select value={month} setValue={setMonth} data={monthSelect} />
       </div>
       <div className="relative">
         {/* Progress */}

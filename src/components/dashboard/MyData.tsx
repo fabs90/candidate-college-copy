@@ -1,6 +1,35 @@
 import styles from "@/styles/border.module.css";
 import { DataIcon } from "../icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function MyData() {
+  const [totalDivisions, setTotalDivisions] = useState<number>(0);
+  const [totalStaff, setTotalStaff] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  useEffect(() => {
+    const getData = async () => {
+      setIsLoading(true);
+      try {
+        const get = await axios.get("/api/authz/groups");
+
+        const department = get.data.data;
+        setTotalDivisions(department.length);
+        const staff: any[] = [];
+        department.forEach(({ members }: { members: any[] }) => {
+          members.forEach((value) => {
+            staff.push(value);
+          });
+        });
+
+        setTotalStaff(staff.length);
+      } catch (err) {
+        console.log(err);
+      }
+      setIsLoading(false);
+    };
+    getData();
+  }, []);
   return (
     <section
       id="third-driver"
@@ -11,18 +40,24 @@ export default function MyData() {
       </div>
       <h3 className="font-bold relative text-xl">My Data</h3>
       <div className="flex gap-3 mt-5 relative">
-        <div className="bg-primary flex-1   py-3 px-4 rounded-lg">
-          <span className="font-medium text-sm block">Total Divisions</span>
-          <span className="font-bold text-[40px] mt-2 leading-[56px] block">
-            2
-          </span>
-        </div>
-        <div className="bg-primary flex-1  py-3 px-4 rounded-lg">
-          <span className="font-medium text-sm block">Total Staffs</span>
-          <span className="font-bold text-[40px] leading-[56px] mt-2 block">
-            14
-          </span>
-        </div>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <div className="bg-primary flex-1   py-3 px-4 rounded-lg">
+              <span className="font-medium text-sm block">Total Divisions</span>
+              <span className="font-bold text-[40px] mt-2 leading-[56px] block">
+                {totalDivisions}
+              </span>
+            </div>
+            <div className="bg-primary flex-1  py-3 px-4 rounded-lg">
+              <span className="font-medium text-sm block">Total Staffs</span>
+              <span className="font-bold text-[40px] leading-[56px] mt-2 block">
+                {totalStaff}
+              </span>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

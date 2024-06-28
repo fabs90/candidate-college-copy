@@ -16,7 +16,7 @@ export default function useAddData({ url, isMultipart = false }: addData) {
         form_data.append(key, event[key]);
       }
 
-      return axios.post(`/api/${url}`, form_data, {
+      return axios.post(`/api/auth${url}`, form_data, {
         ...(isMultipart && {
           headers: {
             "Content-Type": "multipart/form-data",

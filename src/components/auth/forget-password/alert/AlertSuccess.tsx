@@ -5,16 +5,17 @@ import { TickIcon } from "@/components/icons";
 import { CopyIcon } from "@/components/icons";
 import { IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 export default function AlertSuccess({
   isData,
   setIsData,
+  token,
 }: {
   isData: string;
   setIsData: Dispatch<string>;
+  token: string;
 }) {
-  const passwordRef = useRef<HTMLParagraphElement | null>(null);
-
   return (
     <div
       className={`flex inset-0 rounded-[8px] fixed justify-center items-center    bg-black/60 z-30`}
@@ -39,9 +40,13 @@ export default function AlertSuccess({
             Please check your email to receive the OTP code.
           </p>
         </div>
-        <button className="bg-secondary mt-5 rounded-[30px] cursor-pointer text-[#1B4E6B] relative text-sm font-medium py-2 px-6">
-          Enter OTP Code
-        </button>
+        <Link
+          href={`http://localhost:3001/about/division/members/add/otp?token=${token}`}
+        >
+          <button className="bg-secondary mt-5 rounded-[30px] cursor-pointer text-[#1B4E6B] relative text-sm font-medium py-2 px-6">
+            Enter OTP Code
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -7,12 +7,15 @@ import { useForm } from "@tanstack/react-form";
 import useAddData from "@/hooks/useAddData";
 import AlertError from "./alert/AlertError";
 import AlertSuccess from "./alert/AlertSuccess";
+import Link from "next/link";
+import { z } from "zod";
 
 export default function FormSection() {
   const [rememberme, setRememberme] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [token, setToken] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-  const { mutation } = useAddData({ url: "/forgot-password" });
+  const { mutation } = useAddData({ url: "/reset-password" });
   const form = useForm({
     defaultValues: {
       email: "",
@@ -25,14 +28,16 @@ export default function FormSection() {
 
   useEffect(() => {
     setError(mutation.error?.response?.data?.data);
-
+    setToken(mutation.data?.data?.debug?.token);
     setSuccess(mutation.data?.data?.message);
   }, [mutation.error, mutation.data]);
 
   return (
     <section className="flex-1">
       {error && <AlertError isData={error} setisData={setError} />}
-      {success && <AlertSuccess isData={success} setIsData={setSuccess} />}
+      {success && (
+        <AlertSuccess token={token} isData={success} setIsData={setSuccess} />
+      )}
       <div className="flex w-full h-full max-w-[80%] lg:max-w-[70%] m-auto flex-col justify-center   ">
         <h2 className="text-center  text-3xl font-medium">
           Forgot Your Password?
@@ -52,6 +57,19 @@ export default function FormSection() {
             }}
           >
             <InputLogin
+              validator={{
+                onChange: z.string().email("Only email valid"),
+                onChangeAsyncDebounceMs: 500,
+                onChangeAsync: z.string().refine(
+                  async (value) => {
+                    await new Promise((resolve) => setTimeout(resolve, 1000));
+                    return !value.includes("error");
+                  },
+                  {
+                    message: "No 'error' allowed in email",
+                  }
+                ),
+              }}
               className="mt-12 w-full"
               form={form}
               name="email"
@@ -59,13 +77,6 @@ export default function FormSection() {
               type="email"
             />
 
-            <div className="flex justify-between mt-5">
-              <RememberMe
-                rememberme={rememberme}
-                setRememberme={setRememberme}
-              />
-              <span className="text-sm text-secondary">Forgot Password?</span>
-            </div>
             <form.Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
             >
@@ -79,14 +90,16 @@ export default function FormSection() {
                     ? "Loading..."
                     : mutation.isPending
                     ? "Loading..."
-                    : "Submit"}
+                    : "Continue"}
                 </button>
               )}
             </form.Subscribe>
           </form>
           <p className="font-medium mt-3 text-sm text-center">
-            Don’t Have An Account?{" "}
-            <span className="text-secondary">Contact Your Admin</span>
+            Have Your Password?{" "}
+            <Link href={"/auth"}>
+              <span className="text-secondary">Login</span>
+            </Link>
           </p>
         </div>
       </div>

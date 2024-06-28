@@ -16,10 +16,10 @@ export default function DashboardStaffPage() {
       <div className="flex gap-5 mt-5">
         <div className="flex flex-col gap-5 w-7/12">
           <div className="flex gap-5">
-            <EditReport />
+            <EditReport root="/staff" />
             <CompletionReport />
           </div>
-          <MyReport />
+          <MyReport root="/staff" />
         </div>
         <div className="flex flex-col gap-5 w-5/12">
           <PerformanceGrade />

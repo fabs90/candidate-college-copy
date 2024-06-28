@@ -84,21 +84,15 @@ export default function SidebarDesktop({
         </div>
       </div>
       <Separator />
-      <div className="mt-4 px-4">
-        <div className="flex mt-2 h-full relative flex-col">
+      <div className="mt-4 px-4 mb-10 overflow-auto rm-scroll">
+        <div className="flex mt-2  h-full relative flex-col">
           {navLink
             .filter((v) => !v.menu)
-            .map(({ title, path, icon }: any, index: number) => {
+            .map(({ title, path, icon, id }: any, index: number) => {
               return (
                 <Link key={index} href={path}>
                   <div
-                    id={
-                      title == "Weekly Report"
-                        ? "seventh-driver"
-                        : title == "My Staff Report"
-                        ? "nine-driver"
-                        : ""
-                    }
+                    id={id}
                     className={`${styles.border_link} ${
                       path == root
                         ? pathname == path && styles.border_link_active
@@ -114,7 +108,7 @@ export default function SidebarDesktop({
         </div>
       </div>
 
-      <button className="flex bg-[#0D2735] pl-4 inset-x-0  cursor-default absolute bottom-0 flex-auto py-5 gap-2   mt-4 mx-5 items-end">
+      <button className="flex bg-[#0D2735] pl-7 inset-x-1  cursor-default absolute bottom-0 flex-auto py-5 gap-2   mt-4 items-end">
         <div
           className="flex gap-2 relative cursor-pointer"
           onClick={() => setIsActive()}

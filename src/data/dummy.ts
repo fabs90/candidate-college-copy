@@ -4,6 +4,12 @@ export const staff = [
   { name: "Temari" },
   { name: "Shikamaru" },
   { name: "Sasuke" },
+  { name: "Sasuke" },
+  { name: "Sasuke" },
+  { name: "Sasuke" },
+  { name: "Sasuke" },
+  { name: "Sasuke" },
+  { name: "Sasuke" },
 ];
 export const staffreport = [
   { name: "Sakura", jab: "Staff", active: false },

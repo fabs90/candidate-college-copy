@@ -9,7 +9,6 @@ import PerformanceGrade from "@/components/dashboard/PerformanceGrade";
 import "driver.js/dist/driver.css";
 
 import ListStaff from "@/components/dashboard/ListStaff";
-import { staff } from "@/data/dummy";
 
 export default function DashboardStaffPage() {
   return (
@@ -19,12 +18,12 @@ export default function DashboardStaffPage() {
       <div className="grid grid-cols-[55%_45%] gap-5 mt-5 min-h-screen">
         <div className="flex flex-col gap-5 w-full h-full">
           <div className="flex gap-5">
-            <EditReport />
+            <EditReport root={"/head"} />
             <CompletionReport />
           </div>
 
-          <ListStaff data={staff} />
-          <MyReport />
+          <ListStaff root="/head" />
+          <MyReport root="/head" />
         </div>
         <div className="flex flex-col w-full gap-5  h-full">
           <PerformanceGrade />

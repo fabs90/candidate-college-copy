@@ -9,7 +9,15 @@ const nextConfig = {
     return [
       {
         source: "/:slug(api|uploads)/:path*",
+        // destination: "https://cors-proxy-infinityfree.vercel.app/:slug/:path*",
+        destination:
+          "https://weekly-report-api.candidatecollege.org/:slug/:path*",
+      },
+      {
+        source: "/:slug(uploads)/:path*",
         destination: "https://cors-proxy-infinityfree.vercel.app/:slug/:path*",
+        // destination:
+        //   "https://weekly-report-api.candidatecollege.org/:slug/:path*",
       },
     ];
   },
