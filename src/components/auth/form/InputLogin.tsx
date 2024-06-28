@@ -1,7 +1,6 @@
 import { FieldApi, FormApi } from "@tanstack/react-form";
+import { FieldValidators } from "@tanstack/form-core";
 import { HTMLInputTypeAttribute } from "react";
-
-import { z } from "zod";
 
 function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
   return (
@@ -16,14 +15,14 @@ function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
 
 export default function InputLogin({
   name,
-
+  validator,
   type,
   placeholder,
   form,
   className,
 }: {
   name: string;
-
+  validator: FieldValidators<any, string, undefined, any, any> | undefined;
   type: HTMLInputTypeAttribute;
   placeholder: string;
   form: FormApi<any, any>;
@@ -31,22 +30,7 @@ export default function InputLogin({
 }) {
   return (
     <div className={`${className} relative`}>
-      <form.Field
-        name={name}
-        validators={{
-          onChange: z.string().email("Only email valid"),
-          onChangeAsyncDebounceMs: 500,
-          onChangeAsync: z.string().refine(
-            async (value) => {
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-              return !value.includes("error");
-            },
-            {
-              message: "No 'error' allowed in first name",
-            }
-          ),
-        }}
-      >
+      <form.Field name={name} validators={validator}>
         {(field) => {
           // Avoid hasty abstractions. Render props are great!
           return (

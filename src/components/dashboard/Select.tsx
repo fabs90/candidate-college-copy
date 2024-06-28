@@ -1,14 +1,30 @@
+import { Dispatch, SetStateAction } from "react";
+
 type SelectReport = {
   name: string;
+
   value: string;
 };
 
-export default function Select({ data }: { data: SelectReport[] }) {
+export default function Select({
+  data,
+  value,
+  setValue,
+  id = "",
+}: {
+  data: SelectReport[];
+  value: string | any[];
+  setValue: any;
+  id?: string;
+}) {
   return (
     <select
       className="bg-secondary text-primary font-medium rounded-[4px] py-1 px-3"
       name=""
-      id=""
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
+      id={id}
     >
       {data.map(({ name, value }, index) => {
         return (

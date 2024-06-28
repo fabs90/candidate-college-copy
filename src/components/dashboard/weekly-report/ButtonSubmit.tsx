@@ -7,7 +7,11 @@ import React, {
 
 type HTMLProps<T> = ClassAttributes<T> & HTMLAttributes<T>;
 
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {}
+export interface ButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {}
 
 const ButtonSubmit = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {

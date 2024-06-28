@@ -8,12 +8,12 @@ import Navbar from "@/components/dashboard/Navbar";
 import { useState } from "react";
 import ButtonSubmit from "@/components/dashboard/weekly-report/ButtonSubmit";
 import ButtonDelete from "@/components/dashboard/weekly-report/ButtonDelete";
-import useSuccessReport from "@/hooks/useSuccessReport";
+import useSuccess from "@/hooks/useSuccess";
 import DropInputFile from "@/components/dashboard/profile/DropInputFile";
 
 export default function ProfilePage() {
   const [cover, setCover] = useState<Blob | string>("");
-  const { setIsActive } = useSuccessReport();
+  const { setIsActive } = useSuccess();
   return (
     <main>
       <nav className="flex justify-between items-center">
@@ -31,7 +31,11 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex gap-4 mx-auto max-w-[50%] relative mt-5">
-          <ButtonSubmit onClick={() => setIsActive()}>
+          <ButtonSubmit
+            onClick={() =>
+              setIsActive([{ title: "Congrat", message: "HORRAY" }])
+            }
+          >
             Update Profile
           </ButtonSubmit>
         </div>

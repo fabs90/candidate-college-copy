@@ -4,16 +4,17 @@ import { CloseIcon, TickCircle } from "@/components/icons";
 import Button from "@/components/dashboard/Button";
 
 import { useRouter } from "next/navigation";
-import useSuccessReport from "@/hooks/useSuccessReport";
 
-export default function Success() {
-  const { isActive, setIsActive } = useSuccessReport();
+import useSuccess from "@/hooks/useSuccess";
+
+export default function Success({ redirect }: { redirect: string }) {
+  const { isActive, setIsActive } = useSuccess();
 
   const router = useRouter();
   return (
     <div
       className={`${
-        isActive ? "flex" : "hidden"
+        isActive.length ? "flex" : "hidden"
       } inset-0 rounded-[8px] fixed justify-center items-center    bg-black/60 z-30`}
     >
       <div
@@ -21,24 +22,26 @@ export default function Success() {
       >
         <TickCircle />
         <div
-          onClick={() => setIsActive()}
+          onClick={() => setIsActive([])}
           className="absolute cursor-pointer top-5 right-5"
         >
           <CloseIcon />
         </div>
         <div className="max-w-[80%] relative">
           <h1 className="text-white text-2.5xl font-bold text-center">
-            Report Submitted!
+            {/* Report Submitted! */}
+            {isActive[0]?.title}
           </h1>
           <p className="text-grey mt-3 relative  text-center">
-            You have submitted today&apos;s report. You have the option to edit
-            or delete it.
+            {/* You have submitted today&apos;s report. You have the option to edit */}{" "}
+            {/* or delete it. */}
+            {isActive[0]?.message}
           </p>
         </div>
         <Button
           onClick={() => {
-            setIsActive();
-            router.push("/staff");
+            setIsActive([]);
+            router.push(redirect);
           }}
         >
           Back to Dashboard

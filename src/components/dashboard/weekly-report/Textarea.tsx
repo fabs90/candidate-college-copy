@@ -1,7 +1,15 @@
 import { Editor } from "@tinymce/tinymce-react";
-import { useRef } from "react";
+import { SetStateAction, useRef } from "react";
 
-export default function Textarea({ className }: { className: string }) {
+export default function Textarea({
+  className,
+  value,
+  setValue,
+}: {
+  setValue: React.Dispatch<SetStateAction<string>>;
+  value: string;
+  className: string;
+}) {
   const editorRef = useRef<any>(null);
   return (
     <div className={`${className} w-full relative`}>
@@ -11,9 +19,13 @@ export default function Textarea({ className }: { className: string }) {
       <div id="eigth-driver" className="mt-2">
         <Editor
           id="article-text-editor"
+          value={value}
+          onEditorChange={(e) => {
+            setValue(e);
+          }}
           apiKey="ou6vupt6kkvaoyqctm0xfvx9q0dlgl78thc8frfo6afog1x5"
           onInit={(evt, editor) => (editorRef.current = editor)}
-          initialValue="<p>This is the initial content of the editor.</p>"
+          // initialValue="<p>This is the initial content of the editor.</p>"
           init={{
             height: 500,
             menubar: false,
