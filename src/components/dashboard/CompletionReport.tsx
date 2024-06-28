@@ -9,10 +9,10 @@ export default function CompletionReport() {
       <div className="bg-secondary pl-2 pb-2 flex justify-center items-center   absolute right-0 top-0 rounded-bl-full  w-12 h-12">
         <MedalIcon />
       </div>
-      <h4 className="text-white font-medium text-sm max-w-[80%]">
+      <h4 className="text-white font-medium relative text-sm max-w-[80%]">
         My Weekly Report Completion
       </h4>
-      <h5 className="text-white text-dash-nav font-bold">60%</h5>
+      <h5 className="text-white text-dash-nav relative font-bold">60%</h5>
     </section>
   );
 }

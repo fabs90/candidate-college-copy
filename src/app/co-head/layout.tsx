@@ -85,7 +85,7 @@ export default function LayoutSuperAdmin({
     },
   ];
 
-  const linkProfile = "/co-head/profile/edit/1";
+  const linkProfile = "/co-head/profile/edit";
   return (
     <main className="flex w-full min-h-screen z-10 shadow-lg bg-primary text-primary">
       <NewSidebar linkProfile={linkProfile} navLink={navLink} root="/co-head" />
@@ -95,6 +95,7 @@ export default function LayoutSuperAdmin({
       ) && <Alert root="/co-head" />}
 
       <Success redirect="/co-head" />
+
       <Error redirect="/co-head" />
       <Delete redirect="/co-head" />
       <Logout />

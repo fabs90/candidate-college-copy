@@ -85,7 +85,7 @@ export default function LayoutSuperAdmin({
     },
   ];
 
-  const linkProfile = "/head/profile/edit/1";
+  const linkProfile = "/head/profile/edit";
   return (
     <main className="flex w-full min-h-screen z-10 shadow-lg bg-primary text-primary">
       <NewSidebar linkProfile={linkProfile} navLink={navLink} root="/head" />

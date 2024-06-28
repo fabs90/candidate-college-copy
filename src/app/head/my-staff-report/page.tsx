@@ -31,6 +31,7 @@ export default function MyReport() {
 
   const [month, setMonth] = useState<string>(monthSelect[0].value);
   const [staff, setStaff] = useState<any[]>([]);
+  const [showMore, setShowMore] = useState<boolean>(false);
   const [report, setReport] = useState<any[]>([]);
   const [chooseStaff, setChooseStaff] = useState<string>("");
   const [chooseReport, setChooseReport] = useState<any[]>([]);
@@ -168,28 +169,42 @@ export default function MyReport() {
                               />
                             </div>
                             <div className="w-10/12">
-                              <p className="font-light text-xs text-grey">
-                                {value.report}
-                              </p>
-                              <Link
-                                href={"/"}
-                                className="text-secondary text-xs font-medium"
-                              >
-                                Show More
-                              </Link>
+                              <div
+                                className="font-light text-xs text-grey"
+                                dangerouslySetInnerHTML={{
+                                  __html: showMore
+                                    ? value.report
+                                    : value.report.slice(0, 200),
+                                }}
+                              />
+                              {value.report.length > 200 && (
+                                <button
+                                  className="text-secondary text-xs font-medium"
+                                  onClick={() => setShowMore((v) => !v)}
+                                >
+                                  {showMore ? "Show Less" : "Show More"}
+                                </button>
+                              )}
                             </div>
                           </>
                         ) : (
                           <div>
-                            <p className="font-light text-xs text-grey">
-                              {value.report}
-                            </p>
-                            <Link
-                              href={"/"}
-                              className="text-secondary text-xs font-medium"
-                            >
-                              Show More
-                            </Link>
+                            <div
+                              className="font-light text-xs text-grey"
+                              dangerouslySetInnerHTML={{
+                                __html: showMore
+                                  ? value.report
+                                  : value.report.slice(0, 200),
+                              }}
+                            />
+                            {value.report.length > 200 && (
+                              <button
+                                className="text-secondary text-xs font-medium"
+                                onClick={() => setShowMore((v) => !v)}
+                              >
+                                {showMore ? "Show Less" : "Show More"}
+                              </button>
+                            )}
                           </div>
                         )}
                       </div>

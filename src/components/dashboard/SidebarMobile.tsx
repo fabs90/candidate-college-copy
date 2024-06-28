@@ -19,6 +19,7 @@ export default function SidebarMobile({
   children,
 }: {
   root: string;
+
   navLink: any[];
   children?: React.ReactNode;
   profileLink: string;

@@ -9,6 +9,7 @@ export default function PerformanceFeedback() {
   const token = getToken();
   const [feedback, setFeedback] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showMore, setShowMore] = useState<boolean>(false);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -56,15 +57,22 @@ export default function PerformanceFeedback() {
                     </h5>
 
                     <div className="mt-3">
-                      <p className="font-light text-xs text-grey">
-                        {value.feedback}
-                      </p>
-                      <Link
-                        href={"/"}
-                        className="text-secondary text-xs font-medium"
-                      >
-                        Show More
-                      </Link>
+                      <div
+                        className="font-light text-xs text-grey"
+                        dangerouslySetInnerHTML={{
+                          __html: showMore
+                            ? value.feedback
+                            : value.feedback.slice(0, 200),
+                        }}
+                      />
+                      {value.feedback.length > 200 && (
+                        <button
+                          className="text-secondary text-xs font-medium"
+                          onClick={() => setShowMore((v) => !v)}
+                        >
+                          {showMore ? "Show Less" : "Show More"}
+                        </button>
+                      )}
                     </div>
                   </article>
                 );

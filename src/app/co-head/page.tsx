@@ -18,11 +18,11 @@ export default function DashboardStaffPage() {
       <div className="grid grid-cols-[55%_45%] gap-5 mt-5 min-h-screen">
         <div className="flex flex-col gap-5 w-full h-full">
           <div className="flex gap-5">
-            <EditReport root="/co-head" />
+            <EditReport root={"/co-head"} />
             <CompletionReport />
           </div>
 
-          <ListStaff root={"/co-head"} />
+          <ListStaff root="/co-head" />
           <MyReport root="/co-head" />
         </div>
         <div className="flex flex-col w-full gap-5  h-full">

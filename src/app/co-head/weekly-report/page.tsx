@@ -34,9 +34,8 @@ export default function WeeklyReportPage() {
         formData.append("image", image);
       }
       formData.append("date", date);
-      console.log("WOIOIO");
 
-      const result = await axios.post("/api/reports", formData, {
+      await axios.post("/api/reports", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,8 +49,7 @@ export default function WeeklyReportPage() {
         },
       ]);
     } catch (e) {
-      console.log("WOII");
-      setError([{ title: "Failed", message: "Try again soon" }]);
+      setError([{ title: "Error", message: "Try Again soon" }]);
       console.log(e);
     }
   };
