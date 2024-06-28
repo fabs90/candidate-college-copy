@@ -1,8 +1,10 @@
+import { useState } from "react";
 import Progress, { ProgressType } from "./Progress";
 import Select from "./Select";
 import styles from "@/styles/border.module.css";
+import { TasksIcon } from "../icons";
 
-const month = [
+const monthSelect = [
   { name: "Jun", value: "jun" },
   { name: "Jul", value: "jul" },
   { name: "Aug", value: "aug" },
@@ -18,18 +20,19 @@ const performance: ProgressType[] = [
 ];
 
 export default function PerformanceGrade() {
+  const [month, setMonth] = useState<string>(monthSelect[0].value);
   return (
     <section
       id="fifth-driver"
-      className={`${styles.border_section} h-full  relative rounded-[8px]  p-5 bg-[#0D2735]`}
+      className={`${styles.border_section} h-full flex flex-col relative rounded-[8px]  p-5 bg-[#0D2735]`}
     >
       <div className="flex items-center justify-between relative">
         <h3>Performance Grade</h3>
-        <Select data={month} />
+        <Select value={month} setValue={setMonth} data={monthSelect} />
       </div>
-      <div className="relative">
+      <div className="relative h-full">
         {/* Progress */}
-        {performance.map((value, index) => {
+        {/* {performance.map((value, index) => {
           return value.variant !== "BLUE" ? (
             <Progress
               className="mt-4"
@@ -49,7 +52,12 @@ export default function PerformanceGrade() {
               title={value.title}
             />
           );
-        })}
+        })} */}
+
+        <div className="  w-full h-full  inset-0 flex-col gap-5 flex justify-center items-center">
+          <TasksIcon />
+          <p className="text-grey">There&apos;s no grade yet.</p>
+        </div>
       </div>
     </section>
   );

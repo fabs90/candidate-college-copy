@@ -10,23 +10,25 @@ export default function SidebarMenu({
 }: {
   mode: "MOBILE" | "DESKTOP";
   path: string | RegExp;
-  data: { title: string; icon: React.ReactNode; menu: any[] };
+  data: { title: string; icon: React.ReactNode; menu: any[]; id: string };
 }) {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   return (
-    <div className="w-full  relative">
+    <div className="w-full   relative">
       <button
         onClick={() => setIsActive((v) => !v)}
         className={`${styles.border_link} ${
           pathname.match(path) && styles.border_link_active
         } rounded-[10px] w-full ${
-          mode == "MOBILE" && "justify-center"
-        }  px-5 py-3 flex gap-4 items-center text-[#8DA6B5] group hover:text-white text-[14px]`}
+          mode == "MOBILE" && "justify-center px-6"
+        }  px-5 py-3 flex gap-4 items-center justify-between text-[#8DA6B5] group hover:text-white text-[14px]`}
       >
         {mode == "DESKTOP" ? (
           <>
-            {data.icon} {data.title}
+            <div className="flex gap-4">
+              {data.icon} {data.title}
+            </div>
             <IoIosArrowDown
               className={`transition-all ${isActive && "rotate-180"}`}
             />
@@ -47,6 +49,8 @@ export default function SidebarMenu({
                 key={index}
                 href={v.url}
                 className={`${styles.border_link} ${
+                  mode == "MOBILE" && "text-center"
+                } ${
                   pathname.startsWith(v.url) && styles.border_link_active
                 } rounded-[10px] px-5 py-3 flex flex-col gap-4 text-[#8DA6B5] hover:text-white text-[14px]`}
               >
