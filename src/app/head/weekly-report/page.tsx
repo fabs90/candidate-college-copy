@@ -26,7 +26,6 @@ export default function WeeklyReportPage() {
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log(image, date, report);
     try {
       const formData = new FormData();
       formData.append("report", report);

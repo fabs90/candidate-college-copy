@@ -10,8 +10,7 @@ const nextConfig = {
       {
         source: "/:slug(api|uploads)/:path*",
         // destination: "https://cors-proxy-infinityfree.vercel.app/:slug/:path*",
-        destination:
-          "https://weekly-report-api.candidatecollege.org/:slug/:path*",
+        destination: "https://weekly-report.candidatecollege.org/:slug/:path*",
       },
       {
         source: "/:slug(uploads)/:path*",
