@@ -103,7 +103,9 @@ export default function ListStaff({ root }: { root: string }) {
                       height={100}
                       width={100}
                     />
-                    <span className="text-xs text-center">{v.name}</span>
+                    <span className="text-xs block my-2 text-center">
+                      {v.name?.split(" ")?.splice(0, 2)?.join(" ")}
+                    </span>
 
                     {reports?.filter((value) => {
                       return value.user.uuid == v.uuid;

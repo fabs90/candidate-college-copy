@@ -1,5 +1,14 @@
-import { Editor } from "@tinymce/tinymce-react";
-import { SetStateAction, useRef } from "react";
+import { SetStateAction } from "react";
+import dynamic from "next/dynamic";
+
+// This line dynamically imports the Froala Editor component,
+// and sets it to not load on the server (ssr: false)
+const FroalaEditorComponent = dynamic(() => import("react-froala-wysiwyg"), {
+  ssr: false,
+});
+
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
 
 export default function Textarea({
   className,
@@ -10,61 +19,35 @@ export default function Textarea({
   value: string;
   className: string;
 }) {
-  const editorRef = useRef<any>(null);
   return (
     <div className={`${className} w-full relative`}>
       <label className="text-white font-medium block" htmlFor="eigth-driver">
         Your Report <span className="text-danger">*</span>
       </label>
       <div id="eigth-driver" className="mt-2">
-        <Editor
-          id="article-text-editor"
-          value={value}
-          onEditorChange={(e) => {
-            setValue(e);
-          }}
-          apiKey="ou6vupt6kkvaoyqctm0xfvx9q0dlgl78thc8frfo6afog1x5"
-          onInit={(evt, editor) => (editorRef.current = editor)}
-          // initialValue="<p>This is the initial content of the editor.</p>"
-          init={{
-            height: 500,
-            menubar: false,
-            plugins: [
-              "advlist",
-              "autolink",
-              "lists",
-              "link",
-              "image",
-              "charmap",
-              "preview",
-              "anchor",
-              "searchreplace",
-              "visualblocks",
-              "code",
-              "fullscreen",
-              "insertdatetime",
-              "media",
-              "table",
-              "help",
-              "wordcount",
-              "image code",
+        <FroalaEditorComponent
+          tag="textarea"
+          config={{
+            listAdvancedTypes: true,
+            toolbarButtons: [
+              "undo",
+              "formatOL",
+              "redo",
+              "|",
+              "bold",
+              "italic",
+              "underline",
+              "strikeThrough",
+              "subscript",
+              "superscript",
+              "outdent",
+              "indent",
+              "clearFormatting",
+              "insertTable",
+              "html",
             ],
-            images_upload_url: "/api/articles/image/upload",
-            file_picker_types: "image",
-            // file_picker_callback: handleImageUpload,
-            automatic_uploads: true,
-            toolbar1:
-              "undo redo | blocks | " +
-              "bold italic backcolor | alignleft aligncenter " +
-              "alignright alignjustify | bullist numlist outdent indent | " +
-              "removeformat | help | image code | insertfile undo redo",
-            toolbar2:
-              "table tablecellprops tablecopyrow tablecutrow tabledelete tabledeletecol tabledeleterow tableinsertdialog tableinsertcolafter tableinsertcolbefore tableinsertrowafter tableinsertrowbefore tablemergecells tablepasterowafter tablepasterowbefore tableprops tablerowprops tablesplitcells tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
-            content_style:
-              "@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'); body { font-family:Plus Jakarta Sans,Arial,sans-serif; font-size:16px }",
           }}
-          // value={body}
-          // onEditorChange={handleEditorChange}
+          onModelChange={(e: any) => setValue(e)}
         />
       </div>
     </div>
