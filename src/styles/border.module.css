@@ -19,6 +19,25 @@
   mask-composite: exclude;
 }
 
+<<<<<<< HEAD
+=======
+.border_driver {
+  position: relative;
+}
+.border_driver::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 0.5px;
+  background: radial-gradient(100% 178.46% at 0% 0%, #ffde59 0%, #4a8cff 100%);
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+>>>>>>> 24e0ed8 (mentoring)
 .border_nav {
   position: relative;
 }
@@ -106,6 +125,7 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+<<<<<<< HEAD
 .border_section {
   position: relative;
 }
@@ -147,6 +167,16 @@
   position: absolute;
   inset: 0;
   border-radius: 16px;
+=======
+.border_graph {
+  position: relative;
+}
+.border_graph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+>>>>>>> 24e0ed8 (mentoring)
   padding: 0.5px;
   background: radial-gradient(100% 178.46% at 0% 0%, #ffde59 0%, #4a8cff 100%);
 
@@ -154,7 +184,10 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24e0ed8 (mentoring)
 .border_add_article {
   position: relative !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

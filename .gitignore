@@ -4,12 +4,19 @@
 /node_modules
 /.pnp
 .pnp.js
+<<<<<<< HEAD
 .yarn/install-state.gz
+=======
+>>>>>>> 24e0ed8 (mentoring)
 
 # testing
 /coverage
 
+<<<<<<< HEAD
 # next.js
+=======
+next.js
+>>>>>>> 24e0ed8 (mentoring)
 /.next/
 /out/
 
@@ -33,4 +40,26 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+<<<<<<< HEAD
 next-env.d.ts
+=======
+# next-env.d.ts
+.node_modules/
+
+
+#large media files
+*.mp4
+*.mov
+*.wmv
+*.avi
+
+#Other large files
+*.zip
+*.tar.gz
+*.rar
+
+/.idea
+/.vscode
+
+.git
+>>>>>>> 24e0ed8 (mentoring)
