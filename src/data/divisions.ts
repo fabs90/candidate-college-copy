@@ -4,5 +4,5 @@ export const division = [
   { department: "COO", division: 3, staff: 22 },
   { department: "CPD", division: 4, staff: 33 },
   { department: "CRO", division: 2, staff: 14 },
-  { department: "CTO", division: 2, staff: 16 },
+  { department: "CTO", division: 5, staff: 16 },
 ];
